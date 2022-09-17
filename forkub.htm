@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubic-Rubic</title>
+
+    <style>
+        
+        td { width: 50px; height: 50px; text-align: center;  border: 1px solid rgb(48, 46, 46);}
+        .green {background:  rgb(36, 138, 41);}
+        .purple {background: rgb(146, 42, 146);}
+        .orange {background: orangered;}
+        .yellow {background: rgb(40, 87, 148);}
+        .red {background: red;}
+        .yellow1 {background: rgb(179, 179, 16);}
+        .white {background: white;}
+        #tb .border {
+            border: none;
+        }
+        #tb td { width: 300px; height: 50px; text-align: center;  border: 1px solid rgb(48, 46, 46); padding:  1px; /*background-color: lightgreen; */
+         }
+        
+    </style>
+
+</head>
+<body>
+    <table id="tb">
+        <tr>
+            <td class="border">
+             <h3>cedvel 1</h3>
+             <table id="suduki1"></table>
+            </td>
+            <td class="border">
+             <h3>cedvel 2</h3>
+             <table id="suduki2"></table>
+            </td>
+            <td class="border">
+             <h3>cedvel 3</h3>
+             <table id="suduki3"></table>
+            </td>
+            <td class="border">
+             <h3>cedvel 4</h3>
+             <table id="suduki4"></table>
+            </td>
+            <td class="border">
+                <h3>cedvel 5</h3>
+                <table id="suduki5"></table>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        const suduki1 = document.getElementById("suduki1");
+        const suduki2 = document.getElementById("suduki2");
+        const suduki3 = document.getElementById("suduki3");
+        const suduki4 = document.getElementById("suduki4");
+        const suduki5 = document.getElementById("suduki5");
+
+        bosluq = ''
+        let x = 1
+
+        for (let i = 1; i <= 5; i++) {  // row
+            bosluq +="<tr>";
+                for (let k = 1; k <= 5; k++) {  // column
+                    if (i == k) {
+                         x = "green"; 
+                    }
+                    else if  (i + k == 6 ) {
+                        x = "purple"   
+                    }
+                    else if  (i == 3 || k == 3 ) {
+                        x = "orange"   
+                    }
+                    else {
+                        x = "yellow"
+                    }
+                    bosluq +=`<td class = "${x}"></td>`;
+                }
+            bosluq += "</tr>" ;
+        }
+        suduki1.innerHTML = bosluq
+
+        bosluq1 = ''
+        let x1 = 1
+
+        for (let i = 1; i <= 5; i++) {
+            bosluq1 += `<tr>`
+                for (let k = 1; k <= 5; k++) {
+                    if (i == k || i < k) x1 = "green"; else x1 = '';
+                    bosluq1 += `<td class = "${x1}"></td>`;
+                }
+            bosluq1 += `</tr>`
+        }
+        suduki2.innerHTML = bosluq1
+
+        bosluq2 = ''
+        let x2 = 1
+
+        for (let i = 1; i <= 5; i++) {
+            bosluq2 += `<tr>`
+                for (let k = 1; k <= 5; k++) {
+                    if (i==k || i + k == 6)  x2 = "yellow";  else  x2 = ''
+                        bosluq2 += `<td class = "${x2}"></td>`
+                }
+            bosluq2 += `</tr>`
+        }
+        suduki3.innerHTML = bosluq2
+
+        bosluq3 = ''
+        let x3 = 1
+
+        for (let i = 1; i <= 5; i++) {
+            bosluq3 += `<tr>`
+                for (let k = 1; k <= 5; k++) {
+                    if (i==k) { 
+                        x3 = "green";
+                    }
+                     else if (i > k || i < k){
+                          x3 = "purple";
+                     }
+                     else {
+                          x3 = ''
+                     }
+                        bosluq3 += `<td class = "${x3}"></td>`
+                }
+            bosluq3 += `</tr>`
+        }
+        suduki4.innerHTML = bosluq3
+
+        bosluq4 = ''
+        let x4 = 1
+
+        for (let i = 1; i <= 8; i++) {
+            bosluq4 += `<tr>`
+                for (let k = 1; k <= 8; k++) {
+                    if (i == k || i + k == 9) {
+                        x4 = "green";
+                    }
+                    else if ( i == 1 || i == 8 )  {
+                        x4 = "green" ;
+                    }
+                    else if ( (k - i == 1) && ( k + i == 5 || k + i == 7) 
+                             || (k - i == 2) && ( k + i == 6 || k + i == 8)
+                             || (k - i == 3) && ( k + i == 7 || k + i == 8) 
+                             || (k - i == 4) && (k + i == 8)
+                             || (k - i == -2) && ( k + i == 10 || k + i == 12 || k + i == 14)
+                             || (k - i == -1) && ( k + i == 11 || k + i == 13 || k + i == 15)
+                             || (k - i == -4) && (k + i == 10) 
+                             || (k - i == -3) && (k + i == 11)
+                            )  {
+                        x4 = "green" ;
+                    }
+                    else {
+                        x4 = ""
+                    }
+                    bosluq4 += `<td class = "${x4}""></td>`
+                }
+            bosluq4 += `</tr>`
+        }
+        suduki5.innerHTML = bosluq4
+    </script>
+</body>
+</html>
